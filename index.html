@@ -78,11 +78,12 @@
                         <h1>Geography 774</h1>
 						<h2 style="font-size:130%"> <i>Alan Scandrett</i> </h2>
                         <p>The purpose of this website is to showcase work from the Geography 774 " Advanced Spatial Data Handling" course of Auckland University. A series of web based maps are available for inspection via the navigation bar to the left of your browser window. This webpage has been built upon a bootstrap template which is available <a href ="https://github.com/BlackrockDigital/startbootstrap-simple-sidebar"> here</a>.</p>
-                        <p>It is a geographic <code>'Hello World!'</code>.</p>
+                        <p>It is a geographic <code>'Hello World!' <br></code></p>
+						<p><b>FUN FEATURE:</b>  click the polygon to change to a random colour!</p>
 						
 						<div id="mapid" style="width: 600px; height: 400px; position: relative;"></div>
 						<script>
-						var mymap = L.map('mapid').setView([-36.8589, 174.7755], 15); <!--- Sets window geo-locale-->
+						var mymap = L.map('mapid', {maxZoom: 15}).setView([-36.8589, 174.7755], 15); <!--- Sets window geo-locale-->
 						
 						L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXNjYSIsImEiOiJjajE1bXN2NjkwMGxpMnhvdjlsMGN3d3NzIn0.vdMESyeksloGdYJRcrB65Q', {
 						attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets'
@@ -210,8 +211,14 @@
         ]
       }
 						};
+	var col = ["#D46A6A", "#6A9E98", "#87BC5E", "#AA5585", "#FFFFFF"]
+	function rando(){
+	return Math.floor(Math.random() * 6) + 1}
 	var mystyle = {"color" : "#0F5933", "weight": 5, "opacity": 0.65};
 			L.geoJson(domain, {style: mystyle}).addTo(mymap);
+			
+	mymap.on('click', function(e){	var mystyle = {"color" : col[rando()], "weight": 5, "opacity": 0.65};
+			L.geoJson(domain, {style: mystyle}).addTo(mymap);})
 						</script>
                     </div>
                 </div>
