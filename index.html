@@ -24,6 +24,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<link rel="icon" href="http://www.coe.int/coe-map-portlet/images/icon.png">
+	
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+   integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+   integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+   crossorigin=""></script>
 </head>
 
 <body onload="nav()">
@@ -39,10 +46,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href="#">Lab 1</a>
+                    <a href="pages/lab1.html">Lab 1</a>
                 </li>
                 <li>
                     <a href="#">Lab 2</a>
@@ -72,6 +79,140 @@
 						<h2 style="font-size:130%"> <i>Alan Scandrett</i> </h2>
                         <p>The purpose of this website is to showcase work from the Geography 774 " Advanced Spatial Data Handling" course of Auckland University. A series of web based maps are available for inspection via the navigation bar to the left of your browser window. This webpage has been built upon a bootstrap template which is available <a href ="https://github.com/BlackrockDigital/startbootstrap-simple-sidebar"> here</a>.</p>
                         <p>It is a geographic <code>'Hello World!'</code>.</p>
+						
+						<div id="mapid" style="width: 600px; height: 400px; position: relative;"></div>
+						<script>
+						var mymap = L.map('mapid').setView([-36.8589, 174.7755], 15); <!--- Sets window geo-locale-->
+						
+						L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXNjYSIsImEiOiJjajE1bXN2NjkwMGxpMnhvdjlsMGN3d3NzIn0.vdMESyeksloGdYJRcrB65Q', {
+						attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets'
+						}).addTo(mymap); <!--- Brings in tile server connection -->
+						
+						var domain = {
+						"type": "Feature", "properties": {"name": "domain"},
+						"geometry":{
+						      "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              174.77673053741455,
+              -36.8537673180227
+            ],
+            [
+              174.77643013000485,
+              -36.854054910987934
+            ],
+            [
+              174.7761994600296,
+              -36.85414075942457
+            ],
+            [
+              174.77593660354614,
+              -36.85414075942457
+            ],
+            [
+              174.77562010288239,
+              -36.85416651393675
+            ],
+            [
+              174.77518558502197,
+              -36.8538917986927
+            ],
+            [
+              174.77492809295654,
+              -36.85388750625918
+            ],
+            [
+              174.77455258369446,
+              -36.85364283714996
+            ],
+            [
+              174.77388739585876,
+              -36.85419656085667
+            ],
+            [
+              174.7738766670227,
+              -36.8545227837984
+            ],
+            [
+              174.77280378341672,
+              -36.85471164907568
+            ],
+            [
+              174.77205276489258,
+              -36.85457429255668
+            ],
+            [
+              174.7708511352539,
+              -36.85608520069015
+            ],
+            [
+              174.77216005325315,
+              -36.85642858473702
+            ],
+            [
+              174.77237462997437,
+              -36.85680630540675
+            ],
+            [
+              174.77303981781006,
+              -36.857956625038234
+            ],
+            [
+              174.77327585220337,
+              -36.85888373572304
+            ],
+            [
+              174.77256774902344,
+              -36.85890090433337
+            ],
+            [
+              174.77188110351562,
+              -36.85924427572986
+            ],
+            [
+              174.77147340774533,
+              -36.86097827771452
+            ],
+            [
+              174.77093696594238,
+              -36.861613496317595
+            ],
+            [
+              174.77044343948364,
+              -36.861819512027886
+            ],
+            [
+              174.7711730003357,
+              -36.86398264345305
+            ],
+            [
+              174.77396249771118,
+              -36.86456633509247
+            ],
+            [
+              174.7770309448242,
+              -36.863175768256625
+            ],
+            [
+              174.77808237075803,
+              -36.863330276932516
+            ],
+            [
+              174.78085041046143,
+              -36.86097827771452
+            ],
+            [
+              174.77673053741455,
+              -36.8537673180227
+            ]
+          ]
+        ]
+      }
+						};
+	var mystyle = {"color" : "#0F5933", "weight": 5, "opacity": 0.65};
+			L.geoJson(domain, {style: mystyle}).addTo(mymap);
+						</script>
                     </div>
                 </div>
             </div>
