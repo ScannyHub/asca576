@@ -83,7 +83,6 @@
 
 						
 						<div id="mapid" style="width: 600px; height: 400px; position: relative;"></div>
-						<button type="button" onclick="reset()">Reset Map</button>
 						<script>
 						var mymap = L.map('mapid', {maxZoom: 15}).setView([-36.8589, 174.7755], 15); <!--- Sets window geo-locale-->
 						
@@ -220,10 +219,9 @@
 	var mystyle = {"color" : "#0F5933", "weight": 5, "opacity": 0.65};
 			L.geoJson(domain, {style: mystyle}).addTo(mymap);
 			
-	mymap.on('click', function(e){	var mystyle = {"color" : col[rando()], "weight": 5, "opacity": 0.65};
-			L.geoJson(domain, {style: mystyle}).addTo(mymap);})
+	var marker = L.marker([-36.859, 174.775]).addTo(mymap);
+	marker.bindPopup("<b>Auckland Domain</b><br>Auckland, New Zealand.").openPopup();
 			
-	function reset(){mymap.removeLayer('domain')};
 			
 						</script>
                     </div>
