@@ -13,23 +13,27 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Mapbox JS Hook -->
 	<link rel="icon" href="http://www.coe.int/coe-map-portlet/images/icon.png">
 	<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+	<!-- Hook into M.GL.JS API -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet'/>
+
+
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:980px; height:550px; }
   #map2 { position:absolute; top:555px; bottom:0; width:980px; height:550px; }
+  #c2{
+    float:right;
+	width: 35%;
+}​
 </style>
 </head>
 
@@ -89,18 +93,217 @@ L.mapbox.styleLayer('mapbox://styles/asca/cj68xtpzz1uks2rn2rqjzv49l').addTo(map)
 						</div>
 						
 						
-												<div id='map2'>
-						
-						<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoiYXNjYSIsImEiOiJjajE1bXN2NjkwMGxpMnhvdjlsMGN3d3NzIn0.vdMESyeksloGdYJRcrB65Q';
-var map = L.mapbox.map('map2')
-    .setView([-40.9006, 174.8860], 6);
+						<div id='map2'>
+	<script>
+	// Rendering frame and basemap
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYXNjYSIsImEiOiJjajE1bXN2NjkwMGxpMnhvdjlsMGN3d3NzIn0.vdMESyeksloGdYJRcrB65Q';
+	var map2 = new mapboxgl.Map({
+			container: 'map2',
+			style:'mapbox://styles/asca/cj6ef30cy1j4p2rpjej4tqsup',
+			center: [172.6, -41.4],
+			zoom: 4.5
+		});
+		// Pulling in polyline data
+		map2.on('load', function() {
+			map2.addSource('greatwalksplan', {
+				type: 'vector',
+				url: 'mapbox://asca.cj68y3o7h0hv52vqrcuqcgqab-0z3pf'
+			});
+		// Rendering polyline 'greatwalksplan' data
+			map2.addLayer({
+				"id": "greatwalksplan",
+				"type": "line",
+				"source": "greatwalksplan",
+				"source-layer": "greatwalksplan",
+				"layout":{
+				"visibility":"visible",
+				"line-join":"round",
+				"line-cap":"round"
+				},
+				"paint":{
+					"line-color": "green",
+					"line-width":2
+				}
+			});
+			
+			var Markers = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Lake Waikaremoana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          176.9952392578125,
+          -38.80961703319209
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Tongariro Northern Circuit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          175.63018798828125,
+          -39.1311255170899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Abel Tasman Coast Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          173.0518341064453,
+          -40.86419895172045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Heaphy Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          172.20657348632812,
+          -40.8782181410465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Rakiura Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168.05374145507812,
+          -46.848921470800434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Routeburn Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168.13751220703125,
+          -44.79450545288307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Milford Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          167.728271484375,
+          -44.79011985665553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "",
+        "title": "Kepler Track"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          167.5044250488281,
+          -45.390494049089114
+        ]
+      }
+    }
+  ]
+}
+			
+			map2.addLayer({
+					"id": "Markers",
+					"type": "symbol",
+					"source":{
+						"type": "geojson",
+						"data": Markers //geojson variable loaded
+					},
+					"layout": {
+						"icon-image": "za-provincial-2",
+						"text-field": "{title}",
+						"text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Regular"], //POI Font
+						"text-offset": [0, 0.4],
+						"text-anchor": "top",
+					},
+                "paint": {
+                    "text-color": "green",
+                    "text-halo-color": "white",
+                    "text-halo-width": 1,
+                },
+				});
+		map2.setLayerZoomRange('greatwalksplan', 1, 22);
+		// Change the cursor to a pointer when the mouse is over the places layer.
+		map2.on('mouseenter', 'Markers', function () {
+			map2.getCanvas().style.cursor = 'pointer';
+		});
 
-// Use styleLayer to add a Mapbox style created in Mapbox Studio
-L.mapbox.styleLayer('mapbox://styles/asca/cj68xtpzz1uks2rn2rqjzv49l').addTo(map);
-</script>
+		// Change it back to a pointer when it leaves.
+		map2.on('mouseleave', 'Markers', function () {
+			map2.getCanvas().style.cursor = '';
+		});
+		map2.on('click', 'Markers', function (e) {
+				map2.flyTo({center: e.features[0].geometry.coordinates,
+				zoom: 10,
+				speed: 0.3,
+				curve: 1});
+			});
+
+
+		
+	});
+
+	</script>
+</div>
+						<div id="c2">
+						<div>
+						<h1> Lab 3: Mapbox </h1>
+						<h2> <i>JS vs GL JS</i></h2>
 						</div>
-                    </div>
+<div style="background-color:#0F5934;color:white;padding:15px;">
+  <h2>Great Walks</h2>
+  <p>The Great Walks are the countries finest hiking trails, featuring nations best scenery, from beaches, to rainforest, to moutains. Each is maintained to a high standard, making easy exploration of the most scenic parts of New Zealand's backcountry.</p>
+  <p>"Great Walks tracks are well formed and easy to follow. While most people prefer to explore on their own terms, guided trips offer a bit more comfort. Great Walks are accessible from major towns that are well serviced by local operators and accommodation and transport providers." - <a href="http://www.doc.govt.nz/great-walks" style="color: rgb(255,255,255)"> <u>Department of Conservation</u> </a></p>
+</div> 
+<br><br>
+<div style="background-color:#0F5934;color:white;padding:15px;">
+  <h2>The Maps</h2>
+  <p>Both maps feature a stripped down 'Outdoors' basemap provided by the  Mapbox team. The maps each feature a dataset of line-strings from <i> Land Information New Zealand </i> which depict the rough paths of the walks. </p> <p>The topmost map has been executed utilising the JS library of Mapbox, it has bare-bones interactivity in terms of navigating the map itself. Due to limitations of the data each linestring (each walk consists of multiple) has its own title.</p>
+  <p>The bottom most map utilises the Mapbox JS GL library, utilising WebGL to render interactive maps from vector tiles. It features a series of interactive markers, a separate layer from the line-string, which can be clicked on in order to fly the camera to the relevant walk location.</p>
+</div> 
+						</div>
                 </div>
             </div>
         </div>
