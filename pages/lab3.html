@@ -28,8 +28,8 @@
 
 <style>
   body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:980px; height:550px; }
-  #map2 { position:absolute; top:555px; bottom:0; width:980px; height:550px; }
+  #map { position:absolute; top:0; bottom:0; width:980px; height:450px; }
+  #map2 { position:absolute; top:465px; bottom:0; width:980px; height:450px; }
   #c2{
     float:right;
 	width: 35%;
@@ -85,7 +85,7 @@
 						<script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiYXNjYSIsImEiOiJjajE1bXN2NjkwMGxpMnhvdjlsMGN3d3NzIn0.vdMESyeksloGdYJRcrB65Q';
 var map = L.mapbox.map('map')
-    .setView([-40.9006, 174.8860], 5.5);
+    .setView([-40.9006, 174.8860], 4.5);
 
 // Use styleLayer to add a Mapbox style created in Mapbox Studio
 L.mapbox.styleLayer('mapbox://styles/asca/cj68xtpzz1uks2rn2rqjzv49l').addTo(map);
@@ -101,7 +101,7 @@ L.mapbox.styleLayer('mapbox://styles/asca/cj68xtpzz1uks2rn2rqjzv49l').addTo(map)
 			container: 'map2',
 			style:'mapbox://styles/asca/cj6ef30cy1j4p2rpjej4tqsup',
 			center: [172.6, -41.4],
-			zoom: 4.5
+			zoom: 4.1
 		});
 		// Pulling in polyline data
 		map2.on('load', function() {
