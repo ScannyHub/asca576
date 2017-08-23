@@ -30,7 +30,7 @@
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet'/>
 	<!-- Map Container Style -->
 	<style>
-	  #map { position:absolute; top:0; width:1400px; height:900px; }
+	  #map { position:fixed; top:0; width:100%; height:100%; }
 	</style>
 
 	<!-- Audio Button Style -->
@@ -68,7 +68,7 @@
 	</style>
 	</head>
 
-<body onload="nav()">
+<body onload="nav()"  style="background-color:#0A0410;">
 
     <div id="wrapper">
 
@@ -147,7 +147,7 @@
 					center: [-76.72604, 34.72294], //  Atlantic
 					pitch: 50, // pitch in degrees
 					bearing: 50, // bearing in degrees
-					minZoom: 3,
+					minZoom: 4.5,
 					maxZoom: 8
 
 			});
