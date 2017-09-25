@@ -189,10 +189,12 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (mymap) {
 
     var div = L.DomUtil.create('div', 'info legend'),
+		title = '<b>Fires per Hex</b><br>';
         grades = [1, 4, 8, 16, 32, 64, 128],
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval
+	div.innerHTML += title;
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
