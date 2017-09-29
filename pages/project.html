@@ -39,8 +39,8 @@
 			font: 12px/20px 'Agency FB';
 			font-weight: 600;
 			position: absolute;
-			top: 40px;
-			right: 1px;
+			bottom: 10px;
+			right: 50px;
 			z-index: 1;
 			border-radius: 3px;
 			max-width: 20%;
@@ -65,6 +65,35 @@
 			max-width: 400px;
 			font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 		}
+	</style>
+	
+	<style>
+#features {
+    width: 25%;
+    margin-left: 78%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+	height: 800px;
+	
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.4;
+    font-size: 13px;
+	color: black;
+
+
+}
+section.active {
+	background-color: blue;
+	color: white;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}
 	</style>
 	</head>
 
@@ -111,6 +140,7 @@
                 <div class="row">
                     <div class="col-lg-12">	
 	<div id='map'>
+			
 		<!-- Audio Control Button -->
 		<nav id='listing-group' class='listing-group'>
 			<input type='checkbox' id='AudioButton' checked='checked'>
@@ -120,7 +150,7 @@
 		<!-- Audio Play/Pause on Click -->
 		<script>
 			var audio = new Audio('../maps/project/videoplayback.m4a');
-				audio.volume = 0.05;
+				audio.volume = 0.00; //AUDIO IS OFF
 				audio.play(); //Audio Auto-Play
 				audio.addEventListener('ended', function() { //Loop (Firefox Compatible)
 					this.currentTime = 0;
@@ -320,7 +350,7 @@
                 },
 				});
 			});
-			map.addControl(new mapboxgl.FullscreenControl()); //Full Screen Control
+			map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right'); //Full Screen Control
 		    // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
 			map.on('click', 'SSN_Sites', function (e) {
 				map.flyTo({center: e.features[0].geometry.coordinates,
@@ -330,7 +360,44 @@
 			});
 			
 		</script>
-							
+		<div id='features' onscroll="scrollerwindow()">
+				<section id='Soviet submarine K-429' class='active'>
+					<h3>Soviet submarine K-429.</h3>
+					<p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.  mysterious case.Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Soviet submarine K-159'>
+					<h3>Soviet submarine K-159.</h3>
+					<p>Arthur Cadogan West was found dead, head crushed in on train tracks at Aldgate Station at 6AM Tuesday morning. s possession. Mycroft implores Sherlock to take the case and recover the three missing papers.Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Russian submarine K-141'>
+					<h3>Russian submarine K-141</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Soviet submarine K-278'>
+					<h3>Soviet submarine K-278</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Soviet submarine K-219'>
+					<h3>Soviet submarine K-219</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Soviet submarine K-8'>
+					<h3>Soviet submarine K-8</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='Soviet submarine K-27'>
+					<h3>Soviet submarine K-27</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='USS Scorpion (SSN-589)'>
+					<h3>USS Scorpion (SSN-589)</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+				<section id='USS Thresher (SSN-593)'>
+					<h3>USS Thresher (SSN-593)</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+				</section>
+		</div>			
 		<script>
 			//Initiates Pop-ups after layer has loaded, 1 second delay.
 			try {
@@ -358,6 +425,48 @@
 				console.log(err);
 			} 	
 		</script>
+		
+		
+		
+		
+		
+
+		<script>
+	scrollerwindow = function() {
+    var SSN_SitesNames = SSN_Sites.features
+    for (var i = 0; i < SSN_SitesNames.length; i++) {
+        var SSN_SitesName = SSN_SitesNames[i].properties.name;
+		var coord = SSN_SitesNames[i].geometry.coordinates;
+        if (isElementOnScreen(SSN_SitesName)) {
+            setActiveChapter(SSN_SitesName, coord);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'Soviet submarine K-429';
+function setActiveChapter(SSN_SitesName, coord) {
+    if (SSN_SitesName === activeChapterName) return;
+    map.flyTo({center: [coord[0], coord[1]],
+				zoom: 5,
+				speed: 0.1,
+				curve: 1});
+    document.getElementById(SSN_SitesName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = SSN_SitesName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+		
+		
+		
+		</script>
+		
 							
 						</div>
                     </div>
