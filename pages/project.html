@@ -69,32 +69,140 @@
 	
 	<style>
 #features {
-    width: 25%;
-    margin-left: 78%;
+
     font-family: sans-serif;
     overflow-y: scroll;
 	height: 800px;
+	text-align: justify;
+	text-justify: inter-word;
+
 	
 }
 section {
-    padding:  25px 50px;
+    margin-right: 1%;
+    padding:  1px 1px 1px 1px;
     line-height: 25px;
     border-bottom: 1px solid #ddd;
-    opacity: 0.4;
+    opacity: 0.8;
     font-size: 13px;
 	color: black;
+	line-height: 1.4em;
 
 
 }
 section.active {
-	background-color: blue;
-	color: white;
+	background-color: white;
+	color: black;
 }
 section:last-child {
     border-bottom: none;
     margin-bottom: 200px;
 }
 	</style>
+	<!-- Windows 95-Esque -->
+	<style>
+	.container {
+    margin-top: 1%;
+    margin-left: 73%;
+	opacity: 0.99;
+  border: 2px solid;
+  border-bottom-color: #535353;
+  border-right-color: #535353;
+  border-left-color: #dbdbdb;
+  border-top-color: #dbdbdb;
+  background-color: #bfbfbf;
+  max-width: 450px;
+  font-size: 13px;
+  padding: 2px;
+}
+.container ul.toolbar {
+opacity: 0.9;
+  list-style: none;
+  padding: 2px 0;
+  margin: 0;
+}
+.container ul.toolbar li {
+  display: inline-block;
+  padding: 0 5px;
+}
+	ul.toolbar li:hover {
+    background-color: grey;
+	 cursor: pointer;
+}
+	ul.toolbar li:focused {
+    background-color: grey;
+}
+
+
+.container .container-inner {
+  border: 2px solid;
+  border-bottom-color: #c7c7c7;
+  border-right-color: #c7c7c7;
+  border-left-color: #808080;
+  border-top-color: #808080;
+  background-color: #fff;
+  padding: 10px;
+}
+.container .container-inner ul.icons {
+  list-style: none;
+  padding: 2px 0;
+  margin: 0;
+}
+.container .container-inner ul.icons li {
+  display: inline-block;
+  padding: 0 5px;
+}
+.container .statusbar .left, .container .statusbar .right {
+  border: 1px solid;
+  border-color: #888 #dadada #dadada #888;
+  display: inline-block;
+  padding: 0px 5px;
+  font-size: 11px;
+}
+.container .statusbar .left {
+  width: 33%;
+}
+.container .statusbar .right {
+  width: 66%;
+}
+.title {
+  background-color: #808080;
+  padding: 2px 4px 3px 4px;
+  position: relative;
+}
+.title h1 {
+  font-weight: bold;
+  color: #bcbcbc;
+  font-size: 13px;
+  margin: 0;
+}
+.title button {
+  border: 2px solid;
+  border-bottom-color: #444;
+  border-right-color: #444;
+  border-left-color: #a6a6a6;
+  border-top-color: #a6a6a6;
+  background-color: #bfbfbf;
+  position: absolute;
+  font-size: 9px;
+  line-height: 0;
+  padding: 1px;
+  height: 15px;
+  width: 15px;
+  top: 2px;
+}
+.title button.minimize {
+  right: 34px;
+}
+.title button.expand {
+  right: 18px;
+}
+.title button.times {
+  right: 2px;
+}
+
+	</style>
+	
 	</head>
 
 <body onload="nav()">
@@ -139,6 +247,7 @@ section:last-child {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">	
+
 	<div id='map'>
 			
 		<!-- Audio Control Button -->
@@ -146,6 +255,8 @@ section:last-child {
 			<input type='checkbox' id='AudioButton' checked='checked'>
 			<label for='AudioButton'>AUDIO</label>
 		</nav>
+		
+
 		
 		<!-- Audio Play/Pause on Click -->
 		<script>
@@ -173,13 +284,309 @@ section:last-child {
 			var map = new mapboxgl.Map({
 				    container: 'map',
 					style: 'mapbox://styles/asca/cj68xf2zn1u6x2rn2xxyo8min', //'Wargame'-esque
-					center: [-76.72604, 34.72294], //  Atlantic
+					center: [158.5833333333333, 52.75], //  Atlantic
+					zoom: 8,
 					pitch: 50, // pitch in degrees
 					bearing: 50, // bearing in degrees
 					minZoom: 3,
 					maxZoom: 8
 
 			});
+			
+			
+			var US_Bases = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Coco Solo",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Coco_Solo\">Coco Solo</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8812,
+          9.37262,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Base Kitsap",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Base_Kitsap\">Naval Base Kitsap</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.713055555556,
+          47.72055555555561,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Base Point Loma",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Base_Point_Loma\">Naval Base Point Loma</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.244722222222,
+          32.6769444444444,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Station Pearl Harbor",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Station_Pearl_Harbor\">Naval Station Pearl Harbor</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.94397,
+          21.34927,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Submarine Base Bangor",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Submarine_Base_Bangor\">Naval Submarine Base Bangor</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.720047222222,
+          47.7244,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Submarine Base Kings Bay",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Submarine_Base_Kings_Bay\">Naval Submarine Base Kings Bay</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.535,
+          30.7816666666667,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Submarine Base New London",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Submarine_Base_New_London\">Naval Submarine Base New London</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.086964,
+          41.398115,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Naval Undersea Warfare Center",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Naval_Undersea_Warfare_Center\">Naval Undersea Warfare Center</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.308751,
+          41.533067,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New Suffolk, New York",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/New_Suffolk,_New_York\">New Suffolk, New York</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.4752777777778,
+          40.9927777777778,
+          0
+        ]
+      }
+    }
+  ]
+}
+			var RU_Bases = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Polyarny, Murmansk Oblast",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Polyarny,_Murmansk_Oblast\">Polyarny, Murmansk Oblast</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.4666666666667,
+          69.2,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Petropavlovsk-Kamchatsky",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Petropavlovsk-Kamchatsky\">Petropavlovsk-Kamchatsky</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.65,
+          53.01666666666669,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Paldiski",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Paldiski\">Paldiski</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.05,
+          59.35,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Ostrovnoy, Murmansk Oblast",
+        "description": "<br>Source: Wikipedia article <a href=\"https://en.wikipedia.org/wiki/Ostrovnoy,_Murmansk_Oblast\">Ostrovnoy, Murmansk Oblast</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.5,
+          68.05,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Nerpich'ya",
+        "description": "Submarine bases -  SLBMs -  New START Russia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.36153616304062,
+          69.43205033118164,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Yagel'naya",
+        "description": "Submarine bases -  SLBMs -  New START Russia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.3314581011031,
+          69.25762079751253,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Rybachiy",
+        "description": "Submarine bases -  SLBMs -  New START Russia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.4989211990851,
+          52.91877120440304,
+          0
+        ]
+      }
+	  }
+  ]
+}
+			
+			map.on('load', function (){
+				map.addLayer({
+					"id": "US_Bases",
+					"type": "symbol",
+					"source":{
+						"type": "geojson",
+						"data": US_Bases
+					},
+					"layout": {
+						"icon-image": "harbor-15(1)",
+						"text-field": "{Name}",
+						"text-font": ["Call Eight OT Italic", "Arial Unicode MS Bold"], //POI Font
+						"text-offset": [-2.5, 0.5],
+						"text-anchor": "top",
+					},
+                "paint": {
+                    "text-color": "white",
+
+                },
+				});
+				map.addLayer({
+					"id": "RU_Bases",
+					"type": "symbol",
+					"source":{
+						"type": "geojson",
+						"data": RU_Bases
+					},
+					"layout": {
+						"icon-image": "harbor-15(1)",
+						"text-field": "{Name}",
+						"text-font": ["Call Eight OT Italic", "Arial Unicode MS Bold"], //POI Font
+						"text-offset": [-2.5, 1],
+						"text-anchor": "top",
+					},
+                "paint": {
+                    "text-color": "white",
+
+                },
+				});
+			});			
+			
+
 			
 			var SSN_Sites = {
 				"id": "points",
@@ -351,7 +758,8 @@ section:last-child {
 				});
 			});
 			map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right'); //Full Screen Control
-		    // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+		   
+		   // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
 			map.on('click', 'SSN_Sites', function (e) {
 				map.flyTo({center: e.features[0].geometry.coordinates,
 				zoom: 5,
@@ -359,45 +767,97 @@ section:last-child {
 				curve: 1});
 			});
 			
+			map.on('click', 'US_Bases', function (e) {
+				map.flyTo({center: e.features[0].geometry.coordinates,
+				zoom: 5,
+				speed: 0.1,
+				curve: 1});
+			});
+			map.on('click', 'RU_Bases', function (e) {
+				map.flyTo({center: e.features[0].geometry.coordinates,
+				zoom: 5,
+				speed: 0.1,
+				curve: 1});
+			});
+			
 		</script>
+<div class="container">
+  <div class="title">
+    <div class="pull-right">
+      <button class="minimize">-</button>
+      <button class="expand" style="font-size: 13px;">□</button>
+      <button class="times">x</button>
+    </div>
+    <h1><div class="icon-my-computer"></div> Subsafe </h1>
+  </div>
+  <ul class="toolbar">
+    <li><u>F</u>ile</li>
+    <li><u>E</u>dit</li>
+    <li><u>V</u>iew</li>
+    <li><u>H</u>elp</li>
+  </ul>
+    <ul class="toolbar">
+    <li id="US_Bases_Button" style=" border: 1px solid grey;" onclick="Toggler(this.id)">Toggle US Bases</li>
+    <li id="RU_Bases_Button" style=" border: 1px solid grey;" onclick="Toggler(this.id)">Toggle RU Bases</li>
+	<!--<nav id="menu"></nav>-->
+  </ul>
+  <div class="container-inner">
 		<div id='features' onscroll="scrollerwindow()">
 				<section id='Soviet submarine K-429' class='active'>
-					<h3>Soviet submarine K-429.</h3>
-					<p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.  mysterious case.Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+					<h3><br>Soviet submarine K-429.</h3>
+					<p>K-429 (often incorrectly referred to as K-329) was a nuclear submarine of the Soviet Navy. She was launched on 22 April 1972, and was commissioned on 31 October 1972 into the Soviet Pacific Fleet with a complement of 100 officers and men.
+<br><img src="../maps/project/k429.jpg" alt="Mountain View" style="width:360px;height:200px; border-radius: 25px;"><br>
+<h4>The Sinking Incident</h4>
+In early 1983, K-429 returned to base needing overhaul after a long patrol. After turning their boat over to the shipyard, crew departed on leave. Her nuclear weapons remained aboard. <br><br>
+
+That June, Captain First Rank Nikolay Suvorov was ordered by Rear Admiral Oleg Yerofeyev, commander of the Pacific Fleet, to reassume command of K-429 and to take part in an exercise. Suvorov questioned the order: the exercises had been planned for later in the year, the boat was being repaired, the crew was on leave, and Suvorov expected a transfer to St. Petersburg. Yerofeyev explained that Suvorov's Communist Party membership would be revoked and he would have to face a tribunal if he asked such questions. <br><br>
+
+Suvorov recalled his crew and returned to K-429. Much of the crew could not be contacted, and their places were filled by sailors from the naval base and from five other boats that were in port at the time. Nearly one-third of the 120 crewmen had never been on K-429 before, and none of them received any training on K-429. On 23 June 1983, K-429 was ordered to proceed immediately to the torpedo firing range. Suvorov refused that order, replying that standard operating procedures required him to perform a test dive first.<br><br>
+In the late evening on 23 June, K-429 arrived at her testing area in Sarannaya Bay, just south of Petropavlovsk-Kamchatsky, and Suvorov gave the order to dive to periscope depth. However, he had not given the preliminary command to set the diving watch — the crew neither aligned the boat's systems for sea, nor were they at their stations to control the boat during the dive. <br><br>
+Because the boat had not been prepared to dive, instrumentation valves were not aligned properly, and even though the main ballast tanks were filling, their indicators read empty. Confused, Suvorov ordered auxiliary ballast tanks filled. Over-ballasted to about 60 tons negative buoyancy, the boat dove very quickly.<br><br>
+While K-429 was in the shipyard, her ventilation system had been opened to the maximum extent possible, so as to exhaust fumes from welding. Various interlocks that would automatically shut ventilation valves were disabled. This lineup was not corrected before the boat dove. <br><br>
+The open ventilation system caused immediate catastrophic flooding of the forward compartments. Suvorov ordered an emergency ballast blow, but the operator became confused and shut the flood valves on the bottoms of the tanks, while opening the vents on the tops of the tanks. About half of the boat's supply of high-pressure air was wasted through the vents without displacing any water.<br><br>
+The forward compartments took on about 420 cubic meters (420 tons) of water before the ventilation system could be secured, killing 14 men immediately. At about midnight, the boat hit bottom, about 39 meters down. Although Suvorov had made mistakes that contributed to the sinking, his insistence on a test dive had saved the remaining men: the torpedo firing range was around 200 meters deep. If Suvorov had proceeded there directly, K-429 would have been lost.<br> <a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-429" > Source </a><br>
+</p>
 				</section>
 				<section id='Soviet submarine K-159'>
-					<h3>Soviet submarine K-159.</h3>
+					<h3><br>Soviet submarine K-159.</h3>
 					<p>Arthur Cadogan West was found dead, head crushed in on train tracks at Aldgate Station at 6AM Tuesday morning. s possession. Mycroft implores Sherlock to take the case and recover the three missing papers.Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='Russian submarine K-141'>
-					<h3>Russian submarine K-141</h3>
+					<h3><br>Russian submarine K-141</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='Soviet submarine K-278'>
-					<h3>Soviet submarine K-278</h3>
+					<h3><br>Soviet submarine K-278</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='Soviet submarine K-219'>
-					<h3>Soviet submarine K-219</h3>
+					<h3><br>Soviet submarine K-219</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='Soviet submarine K-8'>
-					<h3>Soviet submarine K-8</h3>
-					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
+					<h3><br><br>Soviet submarine K-8</h3>
+					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."<br></p>
 				</section>
 				<section id='Soviet submarine K-27'>
-					<h3>Soviet submarine K-27</h3>
+					<h3><br><br>Soviet submarine K-27</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='USS Scorpion (SSN-589)'>
-					<h3>USS Scorpion (SSN-589)</h3>
+					<h3><br><br>USS Scorpion (SSN-589)</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
 				<section id='USS Thresher (SSN-593)'>
 					<h3>USS Thresher (SSN-593)</h3>
 					<p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere, foreign spies known to be in England, with full address."</p>
 				</section>
-		</div>			
+		</div>
+  </div>
+  <div class="statusbar">
+    <div class="left">3½ Floppy (A:)\\SubSafe </div>
+  </div>
+</div>		
 		<script>
 			//Initiates Pop-ups after layer has loaded, 1 second delay.
 			try {
@@ -409,6 +869,7 @@ section:last-child {
 							.setHTML(e.features[0].properties.description)
 							.addTo(map);
 					});
+					
 					// Change the cursor to a pointer when the mouse is over the places layer.
 					map.on('mouseenter', 'SSN_Sites', function () {
 						map.getCanvas().style.cursor = 'pointer';
@@ -416,6 +877,24 @@ section:last-child {
 
 					// Change it back to a pointer when it leaves.
 					map.on('mouseleave', 'SSN_Sites', function () {
+						map.getCanvas().style.cursor = '';
+					});
+					
+										// Change the cursor to a pointer when the mouse is over the places layer.
+					map.on('mouseenter', 'US_Bases', function () {
+						map.getCanvas().style.cursor = 'pointer';
+					});
+
+					// Change it back to a pointer when it leaves.
+					map.on('mouseleave', 'US_Bases', function () {
+						map.getCanvas().style.cursor = '';
+					});
+					map.on('mouseenter', 'RU_Bases', function () {
+						map.getCanvas().style.cursor = 'pointer';
+					});
+
+					// Change it back to a pointer when it leaves.
+					map.on('mouseleave', 'RU_Bases', function () {
 						map.getCanvas().style.cursor = '';
 					});
 
@@ -469,6 +948,52 @@ function isElementOnScreen(id) {
 		
 							
 						</div>
+					<script>
+var togglelayers = [ 'US_Bases', 'RU_Bases' ];
+    function Toggler(e) {
+		if (e == 'US_Bases_Button'){
+			var clickedLayer = togglelayers[0];
+		}else{
+			var clickedLayer = togglelayers[1];
+		};
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            clickedLayer.className = '';
+			document.getElementById(e).style.background = "grey";
+        } else {
+            clickedLayer.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+			document.getElementById(e).style.background = "#bfbfbf";
+        }
+    };
+
+					</script>
+										<script>
+					    // When the user moves their mouse over the states-fill layer, we'll update the filter in
+    // the state-fills-hover layer to only show the matching state, thus making a hover effect.
+    map.on("mousemove", "US_Bases", function(e) {
+		map.setPaintProperty('US_Bases', 'text-color', 'cyan');
+		map.setLayoutProperty ('US_Bases', 'icon-image', 'triangle-15')
+    });
+
+    // Reset the state-fills-hover layer's filter when the mouse leaves the layer.
+    map.on("mouseleave", "US_Bases", function() {
+		map.setPaintProperty('US_Bases', 'text-color', 'white');
+		map.setLayoutProperty ('US_Bases', 'icon-image', 'harbor-15(1)')
+    });
+	    map.on("mousemove", "RU_Bases", function(e) {
+		map.setPaintProperty('RU_Bases', 'text-color', 'red');
+		map.setLayoutProperty ('RU_Bases', 'icon-image', 'triangle-15(1)')
+    });
+
+    // Reset the state-fills-hover layer's filter when the mouse leaves the layer.
+    map.on("mouseleave", "RU_Bases", function() {
+		map.setPaintProperty('RU_Bases', 'text-color', 'white');
+				map.setLayoutProperty ('RU_Bases', 'icon-image', 'harbor-15(1)')
+    });
+					</script>
                     </div>
                 </div>
             </div>
