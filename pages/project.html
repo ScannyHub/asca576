@@ -30,7 +30,7 @@
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet'/>
 	<!-- Map Container Style -->
 	<style>
-	  #map { position:fixed; top:0; left:10%; width:90%; height:100%; }
+	  #map { position:fixed; top:0; right:0; width:100%; height:100%; }
 	</style>
 
 	<!-- Audio Button Style -->
@@ -102,8 +102,8 @@ section:last-child {
 	<!-- Windows 95-Esque -->
 	<style>
 	.container {
-    margin-top: 1%;
-    margin-left: 73%;
+    margin-top: 0.27%;
+    margin-left: 74.3%;
 	opacity: 0.99;
   border: 2px solid;
   border-bottom-color: #535353;
@@ -248,35 +248,11 @@ opacity: 0.9;
                 <div class="row">
                     <div class="col-lg-12">	
 
-	<div id='map'>
-			
-		<!-- Audio Control Button -->
-		<nav id='listing-group' class='listing-group'>
-			<input type='checkbox' id='AudioButton' checked='checked'>
-			<label for='AudioButton'>AUDIO</label>
-		</nav>
+	<div id='map' onclick="checkfull()">
 		
 
 		
-		<!-- Audio Play/Pause on Click -->
-		<script>
-			var audio = new Audio('../maps/project/videoplayback.m4a');
-				audio.volume = 0.00; //AUDIO IS OFF
-				audio.play(); //Audio Auto-Play
-				audio.addEventListener('ended', function() { //Loop (Firefox Compatible)
-					this.currentTime = 0;
-					this.play();
-				}, false);
-						
-			document.getElementById('listing-group').addEventListener('change', function(e) {
-				var handler = e.target.id;
-				if (e.target.checked) {
-					audio.play();
-				} else {
-					audio.pause();
-				}
-			});
-		</script>
+
 		
 	
 		<script>
@@ -757,7 +733,7 @@ opacity: 0.9;
                 },
 				});
 			});
-			map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right'); //Full Screen Control
+
 		   
 		   // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
 			map.on('click', 'SSN_Sites', function (e) {
@@ -781,6 +757,7 @@ opacity: 0.9;
 			});
 			
 		</script>
+		<script> map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right'); //Full Screen Control</script>
 <div class="container">
   <div class="title">
     <div class="pull-right">
@@ -799,6 +776,7 @@ opacity: 0.9;
     <ul class="toolbar">
     <li id="US_Bases_Button" style=" border: 1px solid grey;" onclick="Toggler(this.id)">Toggle US Bases</li>
     <li id="RU_Bases_Button" style=" border: 1px solid grey;" onclick="Toggler(this.id)">Toggle RU Bases</li>
+	<li id="listing-group" style=" border: 1px solid grey;" onclick="Toggler(this.id)">&#9835;</li>
 	<!--<nav id="menu"></nav>-->
   </ul>
   <div class="container-inner">
@@ -948,14 +926,42 @@ function isElementOnScreen(id) {
 		
 							
 						</div>
+		<!-- Audio Play/Pause on Click -->
+		<script>
+			var audio = new Audio('../maps/project/videoplayback.m4a');
+				audio.volume = 0.3; //AUDIO IS OFF
+				audio.play(); //Audio Auto-Play
+				audio.addEventListener('ended', function() { //Loop (Firefox Compatible)
+					this.currentTime = 0;
+					this.play();
+				}, false);
+						
+			document.getElementById('listing-group').addEventListener('click', function(e) {
+				console.log('insidetheloop')
+				var handler = e.target.id;
+				if (audio.paused) {
+					audio.play();
+				} else {
+					audio.pause();
+				}
+			});
+		</script>
 					<script>
 var togglelayers = [ 'US_Bases', 'RU_Bases' ];
     function Toggler(e) {
 		if (e == 'US_Bases_Button'){
 			var clickedLayer = togglelayers[0];
-		}else{
+		}
+		else if (e == 'RU_Bases_Button'){
 			var clickedLayer = togglelayers[1];
-		};
+		}
+		else{
+			
+			if (document.getElementById(e).style.background == "grey"){
+			document.getElementById(e).style.background = "#bfbfbf";
+			}
+			else{document.getElementById(e).style.background = "grey"}
+		}
         var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
 
         if (visibility === 'visible') {
@@ -967,6 +973,7 @@ var togglelayers = [ 'US_Bases', 'RU_Bases' ];
             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
 			document.getElementById(e).style.background = "#bfbfbf";
         }
+		
     };
 
 					</script>
@@ -994,6 +1001,16 @@ var togglelayers = [ 'US_Bases', 'RU_Bases' ];
 				map.setLayoutProperty ('RU_Bases', 'icon-image', 'harbor-15(1)')
     });
 					</script>
+					
+					<script>
+					
+					var full = document.getElementsByClassName("mapboxgl-ctrl-icon mapboxgl-ctrl-shrink");
+					var shrink = document.getElementsByClassName("mapboxgl-ctrl-icon mapboxgl-ctrl-fullscreen");
+					console.log(full, shrink)
+					</script>
+					
+
+					
                     </div>
                 </div>
             </div>
@@ -1011,6 +1028,7 @@ var togglelayers = [ 'US_Bases', 'RU_Bases' ];
 
     <!-- Menu Toggle Script -->
     <script>
+
 	function nav(){
         $("#wrapper").toggleClass("toggled");}
     </script>
