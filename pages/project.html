@@ -63,7 +63,16 @@
 	<style>
 	    .mapboxgl-popup {
 			max-width: 400px;
-			font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+		}
+		.mapboxgl-popup-content {
+    color: rgba(255, 22, 22, 0.76);
+    background-color: rgba(152, 25, 31, 0.56);
+    border-color: #631114;
+    max-width: 250px;
+    box-shadow: 3px 3px 2px #400A0C;
+    font-family: 'Trebuchet MS';
+	font: 12px/20px
 		}
 	</style>
 	
@@ -205,14 +214,14 @@ opacity: 0.9;
 	
 	</head>
 
-<body onload="nav()">
+<body onload="nav()" style="background-color: #0A0410">
 
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+        <div id="sidebar-wrapper" style="background-color: #0A0410">
+            <ul class="sidebar-nav" >
+                <li class="sidebar-brand" >
                     <a href="#">
                         Navigation Menu
                     </a>
@@ -581,7 +590,7 @@ opacity: 0.9;
 				  "properties": {
 					"name": "Soviet submarine K-429", //Name of Site
 					"icon": "SSN", //Icon
-					"description": "Location Reference:\n https://www.cia.gov/library/readingroom/document/cia-rdp84t00171r000301560001-7" //Desc
+					"description": "Lost at Sea: 14 Lives" //Desc
 				  }
 				},
 				{
@@ -597,7 +606,8 @@ opacity: 0.9;
 				  "properties": {
 						"icon": "poi-dot",
 						'text-color': 'red',
-					"name": "Soviet submarine K-159"
+					"name": "Soviet submarine K-159",
+					"description": "Lost at Sea: 9 Lives"
 				  }
 				},
 				{
@@ -612,7 +622,8 @@ opacity: 0.9;
 				  },
 				  "properties": {
 					"name": "Russian submarine K-141",
-					"icon": "poi-dot"
+					"icon": "poi-dot",
+					"description": "Lost at Sea:  All 118 hands"
 				  }
 				},
 				{
@@ -627,7 +638,8 @@ opacity: 0.9;
 				  },
 				  "properties": {
 					"name": "Soviet submarine K-278",
-					"icon": "poi-dot"
+					"icon": "poi-dot",
+					"description": "Lost at Sea:  42 Lives"
 				  }
 				},
 				{
@@ -642,7 +654,8 @@ opacity: 0.9;
 				  },
 				  "properties": {
 					"name": "Soviet submarine K-219",
-					"icon": "poi-dot"
+					"icon": "poi-dot",
+					"description": "Lost at Sea:  4 Lives"
 				  }
 				},
 				{
@@ -657,7 +670,8 @@ opacity: 0.9;
 				  },
 				  "properties": {
 					"name": "Soviet submarine K-8",
-					"icon": "poi-dot"
+					"icon": "poi-dot",
+					"description": "Lost at Sea:  52 Lives"
 				  }
 				},
 				{
@@ -672,7 +686,8 @@ opacity: 0.9;
 				  },
 				  "properties": {
 					"name": "Soviet submarine K-27",
-					"icon": "poi-dot"
+					"icon": "poi-dot",
+					"description": "Scuttled (intentional), no deaths."
 				  }
 				},
 				{
@@ -688,7 +703,7 @@ opacity: 0.9;
 				  "properties": {
 					"name": "USS Scorpion (SSN-589)",
 					"icon": "poi-dot",
-					"description": "USS Scorpion (SSN-589) was a Skipjack-class nuclear submarine of the United States Navy and the sixth vessel of the U.S. Navy to carry that name."
+					"description": "Lost at Sea: All 99 hands"
 				  }
 				},
 				{
@@ -704,7 +719,7 @@ opacity: 0.9;
 				  "properties": {
 					"name": "USS Thresher (SSN-593)",
 					"icon": "poi-dot",
-					"description": "The second USS Thresher (SSN-593) was the lead boat of her class of nuclear-powered attack submarines in the United States Navy."
+					"description": "Lost at Sea: All 112 hands"
 				  }
 				}
 			  ]
@@ -738,21 +753,21 @@ opacity: 0.9;
 		   // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
 			map.on('click', 'SSN_Sites', function (e) {
 				map.flyTo({center: e.features[0].geometry.coordinates,
-				zoom: 5,
-				speed: 0.1,
+				zoom: 8,
+				speed: 0.2,
 				curve: 1});
 			});
 			
 			map.on('click', 'US_Bases', function (e) {
 				map.flyTo({center: e.features[0].geometry.coordinates,
-				zoom: 5,
-				speed: 0.1,
+				zoom: 8,
+				speed: 0.2,
 				curve: 1});
 			});
 			map.on('click', 'RU_Bases', function (e) {
 				map.flyTo({center: e.features[0].geometry.coordinates,
-				zoom: 5,
-				speed: 0.1,
+				zoom: 8,
+				speed: 0.2,
 				curve: 1});
 			});
 			
@@ -820,8 +835,8 @@ opacity: 0.9;
 					<br><br>
 					On 13 September 1985, K-429 sank at her moorings. She was again raised and decommissioned.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-429" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
-					<a href="https://www.cia.gov/library/readingroom/document/cia-rdp84t00171r000301560001-7" ><img src="../maps/project/CIA.png" alt="CIA" style="width:50px; height:50px;"></a><br>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-429" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://www.cia.gov/library/readingroom/document/cia-rdp84t00171r000301560001-7" ><img src="../maps/project/CIA.png" alt="CIA" style="width:50px; height:50px;"></a><br>
 					</p>
 				</section>
 				
@@ -841,7 +856,7 @@ opacity: 0.9;
 					<br><br>
 					The Russian government is considering plans to raise the wreck of K-159. Admiral Kuroyedov believes that "we should not leave nuclear objects lying on the seabed". Initial plans were to do so in August or September 2004, but they were postponed. In 2007, the British Ministry of Defence began preparations for a salvage operation. As part of that recovery planning, the Scottish company Adus was hired to evaluate the wreck. A high-resolution sonar generated image of K-159 was published on 1 April 2010. Further plans have yet to develop, and the vessel remains on the sea floor.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-159" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-159" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				
@@ -872,7 +887,7 @@ opacity: 0.9;
 					<br><br>
 					Some torpedo and torpedo tube fragments from the bow were recovered and the balance was destroyed by explosives in 2002.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Russian_submarine_Kursk_(K-141)" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Russian_submarine_Kursk_(K-141)" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				
@@ -901,7 +916,7 @@ opacity: 0.9;
 					<br><br>
 					In 1993, Vice Admiral (ret.) Chernov, commander of the submarine group of which the Komsomolets was part, founded the Komsomolets Nuclear Submarine Memorial Society, a charity to support the widows and orphans of his former command. Since then, the Society's charter has expanded to provide assistance to the families of all Soviet and Russian submariners lost at sea. Also, 7 April has become a day of commemoration for all submariners lost at sea.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-278_Komsomolets" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-278_Komsomolets" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				
@@ -936,7 +951,7 @@ opacity: 0.9;
 					<br><br>
 					Preminin was posthumously awarded the Order of the Red Star for his bravery in securing the reactors. Britanov was charged with negligence, sabotage, and treason. He was never imprisoned, but waited for his trial in Sverdlovsk. On 30 May 1987, Defense Minister Sergey Sokolov was dismissed as a result of the Mathias Rust incident two days earlier, and replaced by Dmitry Yazov; the charges against Britanov were subsequently dismissed.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-219" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-219" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				
@@ -951,7 +966,7 @@ opacity: 0.9;
 					<br><br>
 					The captain ordered his entire crew to abandon ship but was countermanded once a towing vessel arrived. Fifty-two crewmen, including the commander, Captain 2nd Rank Vsevolod Borisovich Bessonov, re-boarded the surfaced submarine that was to be towed. This was the first loss of a Soviet nuclear-powered submarine, which sank in rough seas as it was being towed in the Bay of Biscay of the North Atlantic Ocean. Eight mariners had already died due to certain compartments being locked to prevent further flooding as well as the spread of the fire as soon as it was detected. All hands on board died due to CO2 poisoning and the flooding of the surfaced submarine during 80 hours of damage control in stormy conditions. Seventy-three crewmen survived. K-8 sank with four nuclear torpedoes out of total 24 on board to a depth of 4,680 metres  approximately 490 kilometres northwest of Spain.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				
@@ -977,7 +992,7 @@ opacity: 0.9;
 					<br><br>
 					In 2017, plans were again mooted to raise the submarine, by 2022. The Krylov State Research Center of St Petersburg announced that it was working on plans for a catamaran floating dock, capable of such heavy lifts from the seabed.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-27" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-27" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				<section id='USS Scorpion (SSN-589)'>
@@ -1008,7 +1023,7 @@ opacity: 0.9;
 					<br><br>
 					The first cataclysmic event was of such magnitude that the only possible conclusion is that a cataclysmic event (explosion) occurred resulting in uncontrolled flooding (most likely the forward compartments).
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				<section id='USS Thresher (SSN-593)'>
@@ -1045,7 +1060,7 @@ opacity: 0.9;
 					<h4>SUBSAFE Legacy</h4>
 					When the Court of Inquiry delivered its final report, it recommended that the Navy implement a more rigorous program of design review and safety inspections during construction. That program, launched in December 1963, was known as SUBSAFE. From 1915 to 1963, the U.S. Navy lost a total of 16 submarines to non-combat accidents. Since the inception of SUBSAFE only one submarine has suffered a similar fate, and that was USS Scorpion, which sank in 1968 for reasons still undetermined. Scorpion was not SUBSAFE certified.
 					<br><br> <b>Reference:</b> <br>
-					<a href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
+					<a target="_blank" href="https://en.wikipedia.org/wiki/Soviet_submarine_K-8" > <img src="../maps/project/wiki.png" alt="Wikipedia" style="width:50px; height:50px;"> </a>
 					</p>
 				</section>
 				<section>
@@ -1065,7 +1080,7 @@ opacity: 0.9;
 			
 				setTimeout(function(){
 					map.on('click', 'SSN_Sites', function (e) {
-						new mapboxgl.Popup()
+						new mapboxgl.Popup({offset: 20})
 							.setLngLat(e.features[0].geometry.coordinates)
 							.setHTML(e.features[0].properties.description)
 							.addTo(map);
@@ -1128,9 +1143,9 @@ var activeChapterName = 'Soviet submarine K-429';
 function setActiveChapter(SSN_SitesName, coord) {
     if (SSN_SitesName === activeChapterName) return;
     map.flyTo({center: [coord[0], coord[1]],
-				zoom: 5,
-				speed: 0.1,
-				curve: 1});
+				zoom: 6,
+				speed: 0.2,
+				curve: 1.3});
     document.getElementById(SSN_SitesName).setAttribute('class', 'active');
     document.getElementById(activeChapterName).setAttribute('class', '');
 
@@ -1152,7 +1167,7 @@ function isElementOnScreen(id) {
 		<!-- Audio Play/Pause on Click -->
 		<script>
 			var audio = new Audio('../maps/project/videoplayback.m4a');
-				audio.volume = 0.0; //AUDIO IS OFF
+				audio.volume = 0.3; //AUDIO IS OFF
 				audio.play(); //Audio Auto-Play
 				audio.addEventListener('ended', function() { //Loop (Firefox Compatible)
 					this.currentTime = 0;
