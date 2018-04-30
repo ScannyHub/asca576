@@ -1,0 +1,79 @@
+
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+      <!--
+      ArcGIS API for JavaScript, https://js.arcgis.com
+      For more information about the intro-mapview sample, read the original sample description at developers.arcgis.com.
+      https://developers.arcgis.com/javascript/latest/intro-mapview/index.html
+      -->
+    <title>MapImageLayer Touch Animation Error</title>
+      <style>
+        html,
+        body,
+        #viewDiv {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+        }
+      </style>
+    
+      <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
+      <script src="https://js.arcgis.com/4.7/"></script>
+    
+      <script>
+        require([
+          "esri/Map",
+          "esri/views/MapView",
+          "esri/layers/MapImageLayer",
+          "dojo/domReady!"
+        ], function(Map, MapView, MapImageLayer) {
+    
+          var map, view;
+          try {
+            map = new Map({
+              basemap: "dark-gray"
+            });
+    
+            view = new MapView({
+              container: "viewDiv",
+              map: map,
+              zoom: 14,
+              center: [153, -27] // longitude, latitude
+            });
+            
+            view.then(function(){
+              var parcels = new MapImageLayer({
+                                        url:"https://gisservices4.information.qld.gov.au/arcgis/rest/services/QldGlobe/CadastralFramework/MapServer",
+                    sublayers:[
+                        {id: 1, visible: true,
+                            sublayers:[
+                                {id: 4, visible: true}
+                            ]
+                        }
+                    ]
+              });
+              map.add(parcels);
+            });
+
+            // Global - for debug
+            app = {
+              map: map,
+              view: view
+            }
+          } 
+          catch (error) {
+            consol.error(error);
+          }
+          
+    
+        });
+      </script>
+    </head>
+    
+    <body>
+      <div id="viewDiv"></div>
+    </body>
+    </html>
