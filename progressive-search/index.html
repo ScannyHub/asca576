@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="progressive-search.js"></script>
+</head>
+
+<body>
+
+  <form id="form">
+    <input type="search" id="search-input">
+  </form>
+  <button onclick="recordInput(addressQuery(document.getElementById('search-input').value))">Search</button>
+  <p>
+    <b>Test Terms Temporary Storage</b>:</p>
+  <p>
+    <i>Lot/Number Street-Name, Suburb</i>
+  </p>
+  <p>e.g. 7/105 Annie Street, Auchenflower</p>
+  <p id="terms"></p>
+
+  <script>
+    function recordInput(returned_promise) {
+
+      returned_promise.then(response => {
+
+        var x = document.getElementById("search-input").value;
+        document.getElementById("terms").innerHTML = document.getElementById("terms").innerHTML + "<br>" + x + " <b> RESOLVES TO: </b> " + '<br><br>'
+
+        response.features.forEach(function myFunction(item, index) {
+          document.getElementById("terms").innerHTML = document.getElementById("terms").innerHTML + JSON.stringify(item.attributes) + '<br><br>'
+          console.log(item.attributes)
+        });
+      });
+    }
+  </script>
+
+
+</body>
+
+</html>
